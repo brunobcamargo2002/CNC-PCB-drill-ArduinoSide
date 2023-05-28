@@ -17,6 +17,9 @@
 #define limitY 10
 #define limitZ 11
 
+//Drill Pin
+#define drillPin 12
+
 #define enabledPin 8
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class stepMotor{
@@ -66,6 +69,14 @@ class axle{
     }
 };
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class drill{
+  private:
+    int turnPin;
+  public:
+    drill(int turnPIN): turnPin(turnPIN){pinMode(turnPin, OUTPUT);};
+    void turnOn(){digitalWrite(turnPin, HIGH);};
+    void turnOff(){digitalWrite(turnPin, LOW);};
+};
 
 axle* X;
 void setup() {
