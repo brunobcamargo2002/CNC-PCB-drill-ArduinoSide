@@ -1,27 +1,21 @@
 
-#include "axle.h"
-#include "drill.h"
+#include "cnc.h"
+
 
 #define enabledPin 8
 
-axle* X;
+CNC* cnc;
 void setup() {
  // Definindo ambos os pinos acima como saída
   Serial.begin(9600);
 
-  X = new axle(stepPinX, dirPinX, limitX);
+  cnc = new cnc();
 
   pinMode(enabledPin, OUTPUT);
   digitalWrite(enabledPin, LOW);
  }
 
-int a =1;
  void loop() {
-while(a){
-   X->move(50, DOWN);
-   //X->move(50,DOWN);
-   a=0;
-   }
 
  }
   
