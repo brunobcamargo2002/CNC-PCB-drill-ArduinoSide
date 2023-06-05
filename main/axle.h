@@ -15,14 +15,17 @@
 #define LEFT 1 
 #define RIGHT 0
 
+#define XMAX 100
+#define YMAX 100
+
 class axle{
   private:
     stepMotor motor;
     ezButton limitSwitch;
   public:
     axle(int stepPIN, int dirPIN, int limitPIN);
-    bool returnOrigen();
-    void move(float milimeters, bool clockwise);
+    bool returnOrigin();
+    void move(int milimeters);
 };
 
 #endif
