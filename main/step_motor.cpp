@@ -6,11 +6,11 @@ stepMotor::stepMotor(int stepPIN, int dirPIN):stepPin(stepPIN), dirPin(dirPIN){
 }
 
 
-void stepMotor::setDir(bool clockwise){
-  if(clockwise) 
-    digitalWrite(dirPin, HIGH); 
+void stepMotor::setDir(bool positive){
+  if(positive) 
+    digitalWrite(dirPin, LOW); 
   else 
-    digitalWrite(dirPin, LOW);
+    digitalWrite(dirPin, HIGH);
 }
 
 void stepMotor::step(){
@@ -20,14 +20,19 @@ void stepMotor::step(){
         delayMicroseconds(1000);
     }
 
-void stepMotor::steps(int numSteps, bool clockwise){
-  setDir(clockwise);
+void stepMotor::steps(int numSteps, bool positive){
+  setDir(positive);
   for(int x = 0; x < numSteps; x++)
     step();
 }
 
-void stepMotor::move(float milimeters, bool clockwise){
+void stepMotor::move(float milimeters){
   int numSteps = int(milimeters/milimetersPerStep);
-  steps(numSteps, clockwise);
+  bool positive = true;
+  if(milimeters<0){
+    numSteps*=-1;
+    positive = false;
+  }
+  steps(numSteps, positive);
   delay(1000);            
 }

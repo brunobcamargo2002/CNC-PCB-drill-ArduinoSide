@@ -4,9 +4,9 @@ axle::axle(int stepPIN, int dirPIN, int limitPIN):motor(stepPIN, dirPIN), limitS
   limitSwitch.setDebounceTime(50);
 };
 
-bool axle::returnOrigen(){
+bool axle::returnOrigin(){
   int state;
-  motor.setDir(HIGH);
+  motor.setDir(false);
   while(1){
     limitSwitch.loop();
     state = limitSwitch.getState();
@@ -17,6 +17,6 @@ bool axle::returnOrigen(){
   }
 }
 
-void axle::move(float milimeters, bool clockwise){
-  motor.move(milimeters, clockwise);            
+void axle::move(float milimeters){
+  motor.move(milimeters);            
 }

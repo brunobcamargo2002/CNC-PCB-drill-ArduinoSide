@@ -22,9 +22,9 @@ class stepMotor{
   
   public:
     stepMotor(int stepPIN, int dirPIN);
-    void setDir(bool clockwise);
+    void setDir(bool positive);
     void step();
-    void steps(int numSteps, bool clockwise);
-    void move(float milimeters, bool clockwise);
+    void steps(int numSteps, bool positive);
+    void move(float milimeters);
 };
 #endif
